@@ -157,7 +157,7 @@ data['benef']=Ca-Dépenses-Taxes-Autres-salaire-facture
 data['profit']= (data['Total Sales (INR)'] - (data['Quantity Sold'] * data['prix_unitaire']))
 
 # --- Filtres dans la barre latérale ---
-#st.sidebar.header("🔎 Flipark")
+st.sidebar.header("🔎 Tableau de Bord")
 # --- Création des onglets ---
 tabs = st.tabs(["📊 Vue Globale des ventes", "🔄 Details des ventes"])
 
