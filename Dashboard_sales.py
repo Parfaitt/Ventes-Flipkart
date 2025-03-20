@@ -14,7 +14,7 @@ import plotly.figure_factory as ff
 
 # --- Configuration de la page ---
 st.set_page_config(
-    page_title="Reporting ventes",
+    page_title="Reporting des ventes",
     page_icon="📊",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -157,7 +157,7 @@ data['benef']=Ca-Dépenses-Taxes-Autres-salaire-facture
 data['profit']= (data['Total Sales (INR)'] - (data['Quantity Sold'] * data['prix_unitaire']))
 
 # --- Filtres dans la barre latérale ---
-st.sidebar.header("🔎 Flipark")
+#st.sidebar.header("🔎 Flipark")
 # --- Création des onglets ---
 tabs = st.tabs(["📊 Vue Globale des ventes", "🔄 Details des ventes"])
 
