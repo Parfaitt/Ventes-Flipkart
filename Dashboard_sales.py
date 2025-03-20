@@ -229,11 +229,6 @@ with tabs[0]:
     fig3=px.treemap(data, path=["etat","Category","Product Name"],values="Total Sales (INR)",hover_data=["Total Sales (INR)"],color="Category")
     fig3.update_layout(width=800, height=650)
     st.plotly_chart(fig3,use_container_width=True)
-
-    #Create scatter plot
-    data1=px.scatter(data, x="Total Sales (INR)", y="benef", size="Quantity Sold")
-    data1['layout'].update(title="Relation entre Vente et profit", titlefont=dict(size=20),xaxis=dict(title="benef",titlefont=dict(size=19)),yaxis=dict(title="benef",titlefont=dict(size=19)))
-    st.plotly_chart(data1,use_container_width=True)
         
 # =====================================================
     # Onglet 2 : Details des ventes
