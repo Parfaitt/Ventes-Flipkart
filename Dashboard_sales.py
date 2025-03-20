@@ -207,7 +207,7 @@ with tabs[0]:
 
     #Line chart
     data["month_year"] = data["Order Date"].dt.to_period("M")
-    st.subheader('Analyse de séries temporelles')
+    st.subheader('Analyse des ventes par mois')
     linechart = pd.DataFrame(data.groupby(data["month_year"].dt.strftime("%Y : %b"))["Total Sales (INR)"].sum()).reset_index()
     fig2 = px.line(linechart, x="month_year", y="Total Sales (INR)", labels={"Total Sales (INR)": "Montant"}, height=500, width=1000, template="gridon")
     st.plotly_chart(fig2, use_container_width=True)
