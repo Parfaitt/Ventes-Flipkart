@@ -221,8 +221,8 @@ with tabs[0]:
     st.plotly_chart(fig3,use_container_width=True)
 
     #Create scatter plot
-    data1=px.scatter(data, x="Total Sales (INR)", y="profit", size="Quantity Sold")
-    data1['layout'].update(title="Relation entre Vente et profit", titlefont=dict(size=20),xaxis=dict(title="Total Sales (INR)",titlefont=dict(size=19)),yaxis=dict(title="Profit",titlefont=dict(size=19)))
+    data1=px.scatter(data, x="Total Sales (INR)", y="Total Sales (INR)", size="Quantity Sold")
+    data1['layout'].update(title="Relation entre Vente et profit", titlefont=dict(size=20),xaxis=dict(title="Total Sales (INR)",titlefont=dict(size=19)),yaxis=dict(title="Total Sales (INR)",titlefont=dict(size=19)))
     st.plotly_chart(data1,use_container_width=True)
         
 # =====================================================
