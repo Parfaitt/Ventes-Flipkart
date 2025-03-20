@@ -147,7 +147,7 @@ def etatusa(avis):
         return 'inconu'
 data['etat']=data['avis'].apply(etatusa)
 data['prix_unitaire']= data['Total Sales (INR)'] / data['Quantity Sold']
-data['profit']= data['Total Sales (INR)'] - data['Quantity Sold'] * data['prix_unitaire']
+#data['profit']= data['Total Sales (INR)'] - data['Quantity Sold'] * data['prix_unitaire']
 
 # --- Filtres dans la barre latérale ---
 st.sidebar.header("🔎 Flipark")
@@ -238,8 +238,8 @@ with tabs[1]:
 
     # Affichage dans des metric cards
     col1, col2= st.columns(2)
-    col1.markdown(metric_card("Total Profit", f"{Total_profit:,.2f} USD", "#003049"), unsafe_allow_html=True)
-    col2.markdown(metric_card("Total articles vendus", f"{Total_articles_vendus:,.2f} USD", "#003049"), unsafe_allow_html=True)
+    col1.markdown(metric_card("Total Profit", f"{Chiffre_affaire:,.2f} USD", "#003049"), unsafe_allow_html=True)
+    col2.markdown(metric_card("Benefice Net", f"{Chiffre_affaire:,.2f} USD", "#003049"), unsafe_allow_html=True)
 
     
     st.subheader(":point_right: Résumé des ventes")
