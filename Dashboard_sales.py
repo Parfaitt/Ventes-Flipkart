@@ -158,9 +158,6 @@ data['profit']= (data['Total Sales (INR)'] - (data['Quantity Sold'] * data['prix
 
 # --- Filtres dans la barre latérale ---
 st.sidebar.header("🔎 Flipark")
-
-
-
 # --- Création des onglets ---
 tabs = st.tabs(["📊 Vue Globale des ventes", "🔄 Details des ventes"])
 
@@ -171,14 +168,10 @@ tabs = st.tabs(["📊 Vue Globale des ventes", "🔄 Details des ventes"])
 # Calcul des KPI
 with tabs[0]:
     st.subheader("Vue Globale des ventes")
-# -----Date debut date fin --------------------------------------
-# fin--------------------------------------------------------------------------
     Total_commande = data["Order ID"].count()
     Chiffre_affaire=data["Total Sales (INR)"].sum()
     Commande_moyenne=data["Total Sales (INR)"].mean().astype(int)
     Total_article_cmde=data["Quantity Sold"].sum()
-    
-
 
 # Affichage dans des metric cards
     col1, col2= st.columns(2)
@@ -236,29 +229,8 @@ with tabs[0]:
 # ======================================================
 category_df = data.groupby(by=["Category"], as_index=False)["Total Sales (INR)"].sum()
 with tabs[1]:
-     
-# -----Date debut date fin --------------------------------------
-# -----Date debut date fin --------------------------------------
-
-    col1, col2 = st.columns(2)
-    data["Order Date"] = pd.to_datetime(data["Order Date"])
-    
-    startDate = pd.to_datetime(data["Order Date"]).min()
-    endDate = pd.to_datetime(data["Order Date"]).max()
-    
-    with col1:
-        date2 = pd.to_datetime(st.date_input("Date Debut", startDate))
-    
-    with col2:
-        date3 = pd.to_datetime(st.date_input("Date fin", endDate))
-    
-    data = data[(data["Order Date"] >= date2) & (data["Order Date"] <= date3)].copy()
-
-# fin--------------------------------------------------------------------------
-# fin--------------------------------------------------------------------------
     Total_profit = data["benef"].sum()
     Chiffre_affaire=data["Total Sales (INR)"].sum()
-
 
     # Affichage dans des metric cards
     col3, col4= st.columns(2)
