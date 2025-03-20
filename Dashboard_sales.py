@@ -232,9 +232,25 @@ with tabs[0]:
 # ======================================================
 category_df = data.groupby(by=["Category"], as_index=False)["Total Sales (INR)"].sum()
 with tabs[1]:
-    
+     
+# -----Date debut date fin --------------------------------------
 # -----Date debut date fin --------------------------------------
 
+col1, col2 = st.columns(2)
+data["Order Date"] = pd.to_datetime(data["Order Date"])
+
+startDate = pd.to_datetime(data["Order Date"]).min()
+endDate = pd.to_datetime(data["Order Date"]).max()
+
+with col1:
+    date2 = pd.to_datetime(st.date_input("Date Debut", startDate))
+
+with col2:
+    date3 = pd.to_datetime(st.date_input("Date fin", endDate))
+
+data = data[(data["Order Date"] >= date2) & (data["Order Date"] <= date3)].copy()
+
+# fin--------------------------------------------------------------------------
 # fin--------------------------------------------------------------------------
     Total_profit = data["benef"].sum()
     Chiffre_affaire=data["Total Sales (INR)"].sum()
