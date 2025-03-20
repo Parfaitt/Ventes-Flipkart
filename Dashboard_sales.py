@@ -150,9 +150,11 @@ Ca=75213112.74
 Dépenses=8000000
 Taxes=1500000
 Autres=2000000
+salaire=1000000
+facture=1000000
 data['etat']=data['avis'].apply(etatusa)
 data['prix_unitaire']= data['Total Sales (INR)'] / data['Quantity Sold']
-data['benef']=Ca-Dépenses-Taxes-Autres
+data['benef']=Ca-Dépenses-Taxes-Autres-salaire-facture
 data['profit']= (data['Total Sales (INR)'] - (data['Quantity Sold'] * data['prix_unitaire']))
 
 # --- Filtres dans la barre latérale ---
