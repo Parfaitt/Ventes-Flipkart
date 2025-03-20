@@ -233,7 +233,7 @@ with tabs[0]:
 # ======================================================
 category_df = data.groupby(by=["Category"], as_index=False)["Total Sales (INR)"].sum()
 with tabs[1]:
-    Total_profit = data["benef"].sum()
+    Total_profit = data["profit"].sum()
     Chiffre_affaire=data["Total Sales (INR)"].sum()
 
 
