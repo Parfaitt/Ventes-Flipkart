@@ -179,11 +179,11 @@ with tabs[0]:
     col2.markdown(metric_card("Chiffre affaire", f"{Chiffre_affaire:,.2f} USD", "#003049"), unsafe_allow_html=True)
 
 # Ajouter un espace vertical entre les lignes de métriques
-    st.markdown("<div style='margin-bottom: 20px;'></div>", unsafe_allow_html=True)
+    st.markdown("<div style='margin-bottom: 25px;'></div>", unsafe_allow_html=True)
 
-    col3, col4= st.columns(2)
-    col3.markdown(metric_card("Panier moyen", f"{Commande_moyenne:,.2f} USD", "#003049"), unsafe_allow_html=True)
-    col4.markdown(metric_card("Total Article Commandés", Total_article_cmde, "#003049"), unsafe_allow_html=True)
+    col1, col2= st.columns(2)
+    col1.markdown(metric_card("Panier moyen", f"{Commande_moyenne:,.2f} USD", "#003049"), unsafe_allow_html=True)
+    col2.markdown(metric_card("Total Article Commandés", Total_article_cmde, "#003049"), unsafe_allow_html=True)
 
     category_df = data.groupby(by=["Category"], as_index=False)["Total Sales (INR)"].sum()
     
