@@ -185,10 +185,10 @@ with tabs[0]:
     col1.markdown(metric_card("Panier moyen", f"{Commande_moyenne:,.2f} USD", "#003049"), unsafe_allow_html=True)
     col2.markdown(metric_card("Total Article Commandés", Total_article_cmde, "#003049"), unsafe_allow_html=True)
 
-    category_df = data.groupby(by=["Category"], as_index=False)["Total Sales (INR)"].sum()
     
     #graphique en bande et secteur
     with col1:
+        category_df = data.groupby(by=["Category"], as_index=False)["Total Sales (INR)"].sum()
         st.subheader("Ventes par Catégorie")
         fig = px.bar(category_df, x="Category", y="Total Sales (INR)", template="seaborn")
         st.plotly_chart(fig, use_container_width=True, height=200)
