@@ -145,9 +145,14 @@ def etatusa(avis):
         return 'Texas'
     else:
         return 'inconu'
+COGS=4000
+Ca=75.213.112.74
+Dépenses=8000
+Taxes=1500
+Autres=2000
 data['etat']=data['avis'].apply(etatusa)
 data['prix_unitaire']= data['Total Sales (INR)'] / data['Quantity Sold']
-data['benef']= data['prix_unitaire'] * data['Quantity Sold']
+data['benef']=Ca-Dépenses-Taxes-Autres
 data['profit']= (data['Total Sales (INR)'] - (data['Quantity Sold'] * data['prix_unitaire']))
 
 # --- Filtres dans la barre latérale ---
@@ -224,8 +229,8 @@ with tabs[0]:
     st.plotly_chart(fig3,use_container_width=True)
 
     #Create scatter plot
-    data1=px.scatter(data, x="Total Sales (INR)", y="profit", size="Quantity Sold")
-    data1['layout'].update(title="Relation entre Vente et profit", titlefont=dict(size=20),xaxis=dict(title="profit",titlefont=dict(size=19)),yaxis=dict(title="profit",titlefont=dict(size=19)))
+    data1=px.scatter(data, x="Total Sales (INR)", y="benef", size="Quantity Sold")
+    data1['layout'].update(title="Relation entre Vente et profit", titlefont=dict(size=20),xaxis=dict(title="benef",titlefont=dict(size=19)),yaxis=dict(title="benef",titlefont=dict(size=19)))
     st.plotly_chart(data1,use_container_width=True)
         
 # =====================================================
@@ -233,7 +238,7 @@ with tabs[0]:
 # ======================================================
 category_df = data.groupby(by=["Category"], as_index=False)["Total Sales (INR)"].sum()
 with tabs[1]:
-    Total_profit = data["profit"].sum()
+    Total_profit = data["benef"].sum()
     Chiffre_affaire=data["Total Sales (INR)"].sum()
 
 
