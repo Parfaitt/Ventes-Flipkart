@@ -148,7 +148,7 @@ def etatusa(avis):
 data['etat']=data['avis'].apply(etatusa)
 data['prix_unitaire']= data['Total Sales (INR)'] / data['Quantity Sold']
 data['benef']= data['prix_unitaire'] * data['Quantity Sold']
-data['profit']= data['Total Sales (INR)'] - data['Quantity Sold'] * data['prix_unitaire']
+data['profit']= (data['Total Sales (INR)'] - (data['Quantity Sold'] * data['prix_unitaire']))
 
 # --- Filtres dans la barre latérale ---
 st.sidebar.header("🔎 Flipark")
