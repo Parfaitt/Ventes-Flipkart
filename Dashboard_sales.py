@@ -146,7 +146,8 @@ def etatusa(avis):
     else:
         return 'inconu'
 data['etat']=data['avis'].apply(etatusa)
-data['profit']= data['Total Sales (INR)'] / data['Quantity Sold']
+data['prix_unitaire']= data['Total Sales (INR)'] / data['Quantity Sold']
+data['profit']= data['Total Sales (INR)']- (data['Quantity Sold'] * data['prix_unitaire'])
 
 # --- Filtres dans la barre latérale ---
 st.sidebar.header("🔎 Flipark")
@@ -167,6 +168,7 @@ with tabs[0]:
     Chiffre_affaire=data["Total Sales (INR)"].sum()
     Commande_moyenne=data["Total Sales (INR)"].mean().astype(int)
     Total_article_cmde=data["Quantity Sold"].sum()
+    
 
 
 # Affichage dans des metric cards
@@ -221,8 +223,8 @@ with tabs[0]:
     st.plotly_chart(fig3,use_container_width=True)
 
     #Create scatter plot
-    data1=px.scatter(data, x="Total Sales (INR)", y="Total Sales (INR)", size="Quantity Sold")
-    data1['layout'].update(title="Relation entre Vente et profit", titlefont=dict(size=20),xaxis=dict(title="Total Sales (INR)",titlefont=dict(size=19)),yaxis=dict(title="Total Sales (INR)",titlefont=dict(size=19)))
+    data1=px.scatter(data, x="Total Sales (INR)", y="profit", size="Quantity Sold")
+    data1['layout'].update(title="Relation entre Vente et profit", titlefont=dict(size=20),xaxis=dict(title="profit",titlefont=dict(size=19)),yaxis=dict(title="profit",titlefont=dict(size=19)))
     st.plotly_chart(data1,use_container_width=True)
         
 # =====================================================
@@ -230,6 +232,16 @@ with tabs[0]:
 # ======================================================
 category_df = data.groupby(by=["Category"], as_index=False)["Total Sales (INR)"].sum()
 with tabs[1]:
+    Total_profit = data["profit"].sum()
+    Total_articles_vendus=data["prix_unitaire"].sum()
+
+
+    # Affichage dans des metric cards
+    col1, col2= st.columns(2)
+    col1.markdown(metric_card("Total Profit", f"{Total_profit:,.2f} USD", "#003049"), unsafe_allow_html=True)
+    col2.markdown(metric_card("Total articles vendus", f"{Total_articles_vendus:,.2f} USD", "#003049"), unsafe_allow_html=True)
+
+    
     st.subheader(":point_right: Résumé des ventes")
     cl1, cl2 = st.columns(2)
     with cl1:
