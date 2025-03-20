@@ -103,8 +103,22 @@ def metric_card(title, value, bg_color):
 
 # Chargement du fichier
 #os.chdir(r"D:\PROJECT DASHBORD\Sales")
+#date debut
 data = pd.read_csv("flipkart_sales.csv", encoding="ISO-8859-1")
-
+col1, col2 = st.columns(2)
+    data["Order Date"] = pd.to_datetime(data["Order Date"])
+    
+    startDate = pd.to_datetime(data["Order Date"]).min()
+    endDate = pd.to_datetime(data["Order Date"]).max()
+    
+    with col1:
+        date1 = pd.to_datetime(st.date_input("Date Debut", startDate))
+    
+    with col2:
+        date2 = pd.to_datetime(st.date_input("Date fin", endDate))
+    
+    data = data[(data["Order Date"] >= date1) & (data["Order Date"] <= date2)].copy()
+#Date fin
 # --- Nettoyage & transformation ---
 data = data.rename(columns={'Customer Rating': 'Customer_Rating'})
 def avis_client(Customer_Rating):
@@ -154,20 +168,7 @@ tabs = st.tabs(["📊 Vue Globale des ventes", "🔄 Details des ventes"])
 # Calcul des KPI
 with tabs[0]:
     st.subheader("Vue Globale des ventes")
-    # -----Date debut date fin --------------------------------------
-    col1, col2 = st.columns(2)
-    data["Order Date"] = pd.to_datetime(data["Order Date"])
-    
-    startDate = pd.to_datetime(data["Order Date"]).min()
-    endDate = pd.to_datetime(data["Order Date"]).max()
-    
-    with col1:
-        date1 = pd.to_datetime(st.date_input("Date Debut", startDate))
-    
-    with col2:
-        date2 = pd.to_datetime(st.date_input("Date fin", endDate))
-    
-    data = data[(data["Order Date"] >= date1) & (data["Order Date"] <= date2)].copy()
+# -----Date debut date fin --------------------------------------
 # fin--------------------------------------------------------------------------
     Total_commande = data["Order ID"].count()
     Chiffre_affaire=data["Total Sales (INR)"].sum()
