@@ -146,7 +146,7 @@ def etatusa(avis):
     else:
         return 'inconu'
 COGS=4000
-Ca=75.213.112.74
+Ca=75213112.74
 Dépenses=8000
 Taxes=1500
 Autres=2000
