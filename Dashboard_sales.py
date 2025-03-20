@@ -102,7 +102,6 @@ def metric_card(title, value, bg_color):
     return html
 
 # Chargement du fichier
-os.chdir(r"D:\PROJECT DASHBORD\Sales")
 data = pd.read_csv("flipkart_sales.csv", encoding="ISO-8859-1")
 
 # -----Date debut date fin --------------------------------------
