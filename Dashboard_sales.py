@@ -147,10 +147,10 @@ def etatusa(avis):
         return 'inconu'
 COGS=400000
 Ca=75213112.74
-Dépenses=80000000
-Taxes=15000000
-Autres=20000000
-salaire=100000000
+Dépenses=8000000
+Taxes=1500000
+Autres=2000000
+salaire=10000000
 facture=10000000
 data['etat']=data['avis'].apply(etatusa)
 data['prix_unitaire']= data['Total Sales (INR)'] / data['Quantity Sold']
