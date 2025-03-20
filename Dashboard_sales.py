@@ -145,11 +145,11 @@ def etatusa(avis):
         return 'Texas'
     else:
         return 'inconu'
-COGS=40000
+COGS=400000
 Ca=75213112.74
-Dépenses=80000
-Taxes=15000
-Autres=20000
+Dépenses=8000000
+Taxes=1500000
+Autres=2000000
 data['etat']=data['avis'].apply(etatusa)
 data['prix_unitaire']= data['Total Sales (INR)'] / data['Quantity Sold']
 data['benef']=Ca-Dépenses-Taxes-Autres
