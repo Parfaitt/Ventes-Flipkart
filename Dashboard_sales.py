@@ -215,7 +215,7 @@ with tabs[0]:
 
     #Create a treem based on region, category, sub-category
     st.subheader("Vue hiérarchique des ventes")
-    fig3=px.treemap(data, path=["etat","Category"],values="Total Sales (INR)",hover_data=["Total Sales (INR)"],color="Category")
+    fig3=px.treemap(data, path=["etat","Category","Product Name"],values="Total Sales (INR)",hover_data=["Total Sales (INR)"],color="Category")
     fig3.update_layout(width=800, height=650)
     st.plotly_chart(fig3,use_container_width=True)
         
