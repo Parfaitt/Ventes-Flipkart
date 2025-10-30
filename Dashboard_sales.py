@@ -229,13 +229,13 @@ with tabs[0]:
 # ======================================================
 category_df = data.groupby(by=["Category"], as_index=False)["Total Sales (INR)"].sum()
 with tabs[1]:
-    Total_profit = data["benef"]
+    Total_profit = data["benef"].sum()
     Chiffre_affaire=data["Total Sales (INR)"].sum()
 
     # Affichage dans des metric cards
     col3, col4= st.columns(2)
     col3.markdown(metric_card("Chiffre affaire", f"{Chiffre_affaire:,.2f} USD", "#780000"), unsafe_allow_html=True)
-    col4.markdown(metric_card("Benefice Net", f"{Total_profit:,.2f} USD", "#003049"), unsafe_allow_html=True)
+    col4.markdown(metric_card("Benefice Net", f"{Total_profit:,.2f} XOF", "#003049"), unsafe_allow_html=True)
 
     
     st.subheader(":point_right: Résumé des ventes")
