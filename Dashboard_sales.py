@@ -169,7 +169,7 @@ tabs = st.tabs(["📊 Vue Globale des ventes", "🔄 Details des ventes"])
 with tabs[0]:
     st.subheader("Vue Globale des ventes")
     Total_commande = data["Order ID"].count()
-    Chiffre_affaire=data["Total Sales (INR)"].sum()
+    Chiffre_affaire=data["profit"].sum()
     Commande_moyenne=data["Total Sales (INR)"].mean().astype(int)
     Total_article_cmde=data["Quantity Sold"].sum()
 
