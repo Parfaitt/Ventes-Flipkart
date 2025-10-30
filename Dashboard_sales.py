@@ -146,11 +146,11 @@ def etatusa(avis):
         return 'inconu'
 COGS=400000
 Ca=75213112.74
-Dépenses=8000000
-Taxes=150000000
-Autres=200000000
-salaire=1000000000
-facture=1000000000
+Dépenses=80000
+Taxes=150000
+Autres=20000
+salaire=1000000
+facture=1000000
 data['etat']=data['avis'].apply(etatusa)
 data['prix_unitaire']= data['Total Sales (INR)'] / data['Quantity Sold']
 data['benef']=Ca-Dépenses-Taxes-Autres-salaire-facture
@@ -235,7 +235,7 @@ with tabs[1]:
     # Affichage dans des metric cards
     col3, col4= st.columns(2)
     col3.markdown(metric_card("Chiffre affaire", f"{Chiffre_affaire:,.2f} USD", "#780000"), unsafe_allow_html=True)
-    col4.markdown(metric_card("Benefice Net", f"{Total_profit:,.2f} USD", "#003049"), unsafe_allow_html=True)
+    col4.markdown(metric_card("Benefice Net", f"{benef:,.2f} USD", "#003049"), unsafe_allow_html=True)
 
     
     st.subheader(":point_right: Résumé des ventes")
